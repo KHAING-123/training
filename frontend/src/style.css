@@ -1,0 +1,40 @@
+/* デザイントークン（色・余白・角丸）。全コンポーネントの scoped style から
+   var(--...) で参照する。値をここ1箇所で管理することで、色を調整したいときに
+   複数ファイルを探し回らずに済むようにしている */
+:root {
+  --color-primary: #3b82f6;
+  --color-primary-dark: #2563eb;
+  --color-danger: #c0392b;
+  --color-danger-dark: #a93226;
+  --color-border: #ddd;
+  --color-text: #222;
+  --color-text-muted: #666;
+  --color-bg: #fafafa;
+
+  --radius: 8px;
+  --radius-sm: 6px;
+}
+
+/* グローバルなリセットと基本設定のみ。個別のUIはコンポーネントのscoped styleで管理する */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+/* スマホ〜PCまで文字サイズが崩れないようにする最低限のレスポンシブ設定
+   ブレークポイントは 600px に統一し、各コンポーネントの @media もこれに揃えている */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 15px;
+  }
+}
